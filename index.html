@@ -2,7 +2,7 @@
 <head>
 	<link href='https://fonts.googleapis.com/css?family=Philosopher' rel='stylesheet' type='text/css'>
 	<link href='https://fonts.googleapis.com/css?family=Playball' rel='stylesheet' type='text/css'>
-<script src="http://maps.google.com/maps/api/js"></script>
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAQXoFqj0lv6zXfgQ55fhoDBCRkTufsIDE&region=GB"></script>
     <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
     <script src="https://cdn.jsdelivr.net/gmap3/7.0.0/gmap3.min.js"></script>
 
@@ -183,17 +183,31 @@
 </body>
 <script src="./plugins/howler.js/howler.min.js"></script>
 <script type="text/javascript">
+	var ambience = new Howl({
+  urls: ['audio/ambience.mp3'],
+  loop: true,
+  sprite: {
+  
+    'ambience': [100, 51000]
+  }
+});
+
 	var sound = new Howl({
   urls: ['audio/audiosprite.mp3', 'audio/audiosprite.m4a'],
   sprite: {
     'silence': [0, 5000],
     'globe-appearing-at-start': [22000, 10000],
     'globe-spin': [13000, 16000]
+  },
+  onend: function(){
+  	ambience.play('ambience');
   }
 });
 
-// shoot the laser!
-sound.play('globe-appearing-at-start');
+ sound.play('globe-appearing-at-start');
+
+
+	//
 
 </script>
 
